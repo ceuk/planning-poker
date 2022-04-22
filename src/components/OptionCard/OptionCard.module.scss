@@ -1,0 +1,80 @@
+.card {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    text-align: left;
+    max-width: 100%;
+    cursor: pointer;
+    border: 0.3rem solid var(--color-bg);
+    transition: all .2s ease-in-out;
+    transform: scale(1);
+    will-change: transform;
+
+    @media (min-width: 640px) {
+        width: var(--width-card);
+    }
+
+    @media (min-width: 1020px) {
+        width: var(--width-card-medium);
+    }
+
+    &:hover {
+        box-shadow: var(--box-shadow-elevated) var(--color-shadow);
+        transform: scale(1.01);
+    }
+
+    :checked + & {
+        border-color: var(--color-link);
+    }
+
+    :checked + & .heading::before {
+        content: "✓";
+        background: var(--color-link);
+    }
+}
+
+.radio {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+.heading {
+    margin: 0;
+    font-size: 1.7rem;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    user-select: none;
+    line-height: 1;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 1.4rem;
+        height: 1.4rem;
+        background: var(--color-bg-secondary);
+        border-radius: 0.3rem;
+        margin-right: 0.9rem;
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+}
+
+.headingEmphasis {
+    color: var(--color);
+}
+
+.hint {
+    user-select: none;
+    margin: 1rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 1.4rem;
+}

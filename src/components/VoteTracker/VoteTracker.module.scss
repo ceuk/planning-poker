@@ -1,0 +1,52 @@
+.root {
+    max-width: 100%;
+    text-align: center;
+    padding: 2rem 3.5rem;
+    margin: 0 auto 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    border: 0.3rem solid var(--color-bg);
+    display: inline-block;
+}
+
+.heading {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    font-size: 1.75rem;
+}
+
+.playerName {
+    margin-left: 1rem;
+    font-weight: 400;
+
+    .voted + & {
+        font-weight: 500;
+    }
+}
+
+.indicator {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: var(--color-text-secondary);
+
+    &.voted {
+        background: #42f690;
+    }
+}

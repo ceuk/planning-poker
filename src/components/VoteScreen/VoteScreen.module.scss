@@ -1,0 +1,22 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 0;
+    max-width: none;
+}
+
+.heading {
+    margin-top: auto;
+}
+
+.cards {
+    width: 100%;
+    margin: 0;
+    padding: 2.5rem 0 0;
+    max-height: 50vh;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}

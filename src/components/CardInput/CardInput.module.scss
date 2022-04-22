@@ -1,0 +1,60 @@
+.container {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    text-align: left;
+    max-width: 100%;
+    border: 0.3rem solid var(--color-bg);
+
+    @media (min-width: 640px) {
+        width: var(--width-card);
+    }
+
+    @media (min-width: 1020px) {
+        width: var(--width-card-medium);
+    }
+}
+
+.label {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+.input {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 200;
+    padding: 1rem;
+    text-align: center;
+    margin: 0 0 -0.1rem;
+    border: 0.2rem solid var(--color-bg-secondary);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:focus {
+        outline-width: 0.2rem;
+    }
+}
+
+.button {
+    margin: 0;
+    padding: 0;
+    background: var(--color-bg-secondary);
+    color: var(--color-text); 
+    border: 0;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 2.5;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}

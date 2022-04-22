@@ -1,0 +1,50 @@
+.root {
+    padding: 0;
+    width: 6rem;
+    user-select: none;
+    height: 9rem;
+    display: inline-flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 0.2rem solid var(--color);
+    box-shadow: inset 0px 0px 0px 0.2rem #fff, var(--box-shadow) var(--color-shadow);
+    background: var(--color);
+    border-radius: var(--border-radius);
+    padding: 0.2rem;
+    margin: 0.2rem;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    overflow-wrap: anywhere;
+    line-height: 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    transform: scale(1);
+    transform-origin: bottom center;
+    will-change: transform;
+
+    @media (min-width: 640px) {
+        margin: 0.6rem;
+        font-size: 3rem;
+        width: 12rem;
+        height: 18rem;
+    }
+
+    &:hover {
+        box-shadow: inset 0px 0px 0px 0.2rem #fff, var(--box-shadow-elevated) var(--color-shadow);
+        transform: scale(1.02);
+    }
+}
+
+.picked {
+    transform: scale(1) translateY(-2.5rem);
+
+    &:hover {
+        box-shadow: inset 0px 0px 0px 0.2rem #fff, var(--box-shadow-elevated) var(--color-shadow);
+        transform: scale(1.02) translateY(-2.5rem);
+    }
+}

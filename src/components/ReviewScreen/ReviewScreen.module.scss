@@ -1,0 +1,11 @@
+.table {
+    width: 25rem;
+    td {
+        min-width: 11rem;
+        &:last-child {
+            font-weight: bold;
+            text-align: right;
+        }
+    }
+}
+

@@ -1,0 +1,7 @@
+.roomLink {
+  user-select: all;
+  font-weight: 600;
+  &::selection {
+    background: skyblue;
+  }
+}

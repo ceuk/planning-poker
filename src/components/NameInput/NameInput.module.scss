@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+    font-size: 2rem;
+    line-height: 2;
+    padding: 0 2rem;
+}
+
+.button,
+.input{
+    width: 40rem;
+    max-width: 100%;
+
+    @media (min-width: 640px) {
+        width: var(--width-card);
+    }
+
+    @media (min-width: 1020px) {
+        width: var(--width-card-medium);
+    }
+}

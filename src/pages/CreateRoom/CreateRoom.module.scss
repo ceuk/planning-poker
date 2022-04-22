@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (min-width: 640px) {
+        flex-direction: row;
+    }
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.fieldSet {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    transform: scale(1);
+    border: 0.3rem solid var(--color-bg);
+    will-change: transform;
+    max-width: 100%;
+
+    @media (min-width: 640px) {
+        width: var(--width-card);
+    }
+
+    @media (min-width: 1020px) {
+        width: var(--width-card-medium);
+    }
+}
+
+.cardsInput {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+}
+
+.step {
+    background: var(--color-bg);
+    flex-grow: 0;
+    position: relative;
+
+    @media (min-width: 640px) {
+        &:not(:first-child) {
+            animation: slideRight .3s ease-out 0s 1 normal forwards;
+        }
+
+        &:nth-child(1) {
+            z-index: 5;
+        }
+        &:nth-child(2) {
+            z-index: 4;
+        }
+        &:nth-child(3) {
+            z-index: 3;
+        }
+        &:nth-child(4) {
+            z-index: 2;
+        }
+        &:nth-child(5) {
+            z-index: 1;
+        }
+    }
+}
+
+.inactiveStep {
+    > :not(:last-child) {
+        opacity: .9;
+    }
+    @media (min-width: 640px) {
+        &:not(:last-child) {
+            animation: slideLeft .2s ease-out 0s 1 normal forwards !important;
+        }
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(50%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 0.9;
+    }
+}

@@ -1,0 +1,17 @@
+.button {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 25rem;
+    animation: growIn .2s cubic-bezier(0.42, 0, 0.56, 1.15) 0s 1 normal forwards;
+}
+
+@keyframes growIn {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
