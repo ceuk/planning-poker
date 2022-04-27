@@ -25,6 +25,7 @@ type Reducers = MapReducerPayloads<RoomState, {
   addConnection: { id: string, name: string }
   removeConnection: { id: string, name: string }
   updateConnectionStatus: boolean
+  updateConnections: Record<string, string>
   updateHostName: string
   leaveRoom: void
 }>
@@ -75,6 +76,10 @@ export const roomSlice = createSlice<RoomState, Reducers>({
       delete state.connections[payload.id]
       state.players = buildPlayerList(state)
     },
+    updateConnections: (state, { payload }) => {
+      state.connections = payload
+      state.players = buildPlayerList(state)
+    },
     updateHostName: (state, { payload }) => {
       state.hostName = payload
       state.players = buildPlayerList(state)
@@ -94,6 +99,7 @@ export const {
   addConnection,
   removeConnection,
   updateConnectionStatus,
+  updateConnections,
   leaveRoom,
   updateHostName
 } = roomSlice.actions
@@ -143,10 +149,13 @@ function * leaveRoomSaga() {
 function * addConnectionSaga({ payload }: PayloadAction<{id: string, name: string}>) {
   const cards: string[] = yield select(state => state.deck.cards)
   const userName: string = yield select(state => state.user.name)
+  const { [payload.id]: _, ...connections } : Record<string, string> = yield select(state => state.room.connections)
   const updateCardsAction: PayloadAction<string[]> = yield call(selectCards, cards)
   const updateHostNameAction: PayloadAction<string> = yield call(updateHostName, userName)
+  const updateConnectionsAction: PayloadAction<Record<string, string>> = yield call(updateConnections, connections)
   yield call(Room.DispatchToClient, payload.id, updateCardsAction)
   yield call(Room.DispatchToClient, payload.id, updateHostNameAction)
+  yield call(Room.DispatchToClient, payload.id, updateConnectionsAction)
   yield call(toast, `${payload.name} joined`)
 }
 
