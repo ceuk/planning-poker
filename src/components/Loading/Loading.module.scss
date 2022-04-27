@@ -1,0 +1,124 @@
+.root {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading {
+    font-weight: normal;
+    margin-top: 5rem;
+    transform: translateX(0.25em);
+}
+
+.card {
+    position: relative;
+    user-select: none;
+
+    &::after {
+        content: '';
+        position: absolute;
+        margin-top: 1.1rem;
+        top: 100%;
+        left: 0;
+        height: 1rem;
+        width: 100%;
+        background: var(--color-bg-secondary);
+        border-radius: 50%;
+        z-index: 1;
+        animation: morph 2s linear 0s infinite;
+        transform-origin: top center;
+    }
+}
+
+.cardFront,
+.cardBack {
+    width: 6rem;
+    height: 9rem;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 0.2rem solid var(--color);
+    box-shadow: inset 0px 0px 0px 0.2rem #fff, var(--box-shadow) var(--color-shadow);
+    background: var(--color);
+    border-radius: var(--border-radius);
+    padding: 0.2rem;
+    margin: 0.2rem 0;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: relative;
+    z-index: 3;
+}
+
+.cardFront {
+    animation: spin 2s linear 0s infinite;
+}
+
+.cardBack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: reversespin 2s linear 0s infinite;
+}
+
+@keyframes morph {
+    0% {
+        transform: scale(1,1);
+    }
+    25% {
+        transform: scale(0.9, 1.2);
+    }
+    50% {
+        transform: scale(1,1);
+    }
+    75% {
+        transform: scale(0.9, 1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate3d(0,1,0,0deg) rotateZ(30deg);
+    }
+    25% {
+        transform: rotate3d(0,1,0,180deg) rotateZ(30deg);
+    }
+    50% {
+        transform: rotate3d(0,1,0,0deg) rotateZ(30deg);
+    }
+    75% {
+        transform: rotate3d(0,1,0,-180deg) rotateZ(30deg);
+    }
+    100% {
+        transform: rotate3d(0,1,0,0deg) rotateZ(30deg);
+    }
+}
+
+@keyframes reversespin {
+    0% {
+        transform: rotate3d(0,1,0,-180deg) rotateZ(30deg);
+    }
+    25% {
+        transform: rotate3d(0,1,0,0deg) rotateZ(30deg);
+    }
+    50% {
+        transform: rotate3d(0,1,0,180deg) rotateZ(30deg);
+    }
+    75% {
+        transform: rotate3d(0,1,0,0deg) rotateZ(30deg);
+    }
+    100% {
+        transform: rotate3d(0,1,0,-180deg) rotateZ(30deg);
+    }
+}
