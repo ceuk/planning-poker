@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 import List from '@/components/List/List'
 import OptionCard from '@/components/OptionCard/OptionCard'
 import { useAppDispatch, useAppSelector } from '@/state/hooks'

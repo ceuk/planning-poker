@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { MapReducerPayloads } from '@/state/utils'
 import { call, takeLatest, select } from 'redux-saga/effects'
