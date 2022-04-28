@@ -178,6 +178,4 @@ class RoomInterface {
   static get Dispatch() { return null }
 }
 
-(window as any).Room = RoomInterface
-
 export default RoomInterface
