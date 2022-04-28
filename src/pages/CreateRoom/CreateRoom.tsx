@@ -4,7 +4,7 @@ import Nav from '@/components/Nav/Nav'
 import styles from './CreateRoom.module.scss'
 import SizeOptionList from '@/components/SizeOptionList/SizeOptionList'
 import DecksList from '@/components/DecksList/DecksList'
-import HideableFormSection from '@/components/HideFormSection/HideableFormSection'
+import HideableFormSection from '@/components/HideableFormSection/HideableFormSection'
 import CustomCardForm from '@/components/CustomCardForm/CustomCardForm'
 
 const stepStyles = (inactive: boolean) => classNames(
