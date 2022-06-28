@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, ChangeEventHandler, useState } from 'react'
+import { KeyboardEvent, ChangeEventHandler, useState } from 'react'
 import Nav from '@/components/Nav/Nav'
 import { useAppDispatch } from '@/state/hooks'
 import { updateUserName } from '@/state/slices/user'
