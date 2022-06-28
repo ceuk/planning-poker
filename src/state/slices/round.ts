@@ -10,18 +10,21 @@ export const enum RoundStatus {
 }
 
 interface RoundState {
-  status: RoundStatus,
-  votes: Record<string, string>,
+  status: RoundStatus
+  description: string
+  votes: Record<string, string>
 }
 
 type Reducers = MapReducerPayloads<RoundState, {
   updateStatus: RoundStatus
+  updateDescription: string
   castVote: { id: string, vote: string }
   reset: void
 }>
 
 const initialState: RoundState = {
   status: RoundStatus.VOTING,
+  description: '',
   votes: {}
 }
 
@@ -31,6 +34,9 @@ export const roundSlice = createSlice<RoundState, Reducers>({
   reducers: {
     updateStatus: (state, { payload }) => {
       state.status = payload
+    },
+    updateDescription: (state, { payload }) => {
+      state.description = payload
     },
     castVote: (state, { payload }) => {
       state.votes[payload.id] = payload.vote
@@ -43,18 +49,19 @@ export const roundSlice = createSlice<RoundState, Reducers>({
 
 export const {
   updateStatus,
+  updateDescription,
   castVote,
   reset
 } = roundSlice.actions
 
-function * broadcastResetSaga(action: PayloadAction<any>) {
+function * broadcastOwnerUpdatesSaga(action: PayloadAction<any>) {
   const owner: boolean = yield select(state => state.room.owner)
   if (owner) {
     yield call(Room.Broadcast, action)
   }
 }
 
-function * broadcastUpdateSaga(action: PayloadAction<any>) {
+function * propogateUpdatesSaga(action: PayloadAction<any>) {
   const owner: boolean = yield select(state => state.room.owner)
   const isMyAction = action.payload?.id === Room.MyID
   if (isMyAction || owner) {
@@ -63,9 +70,10 @@ function * broadcastUpdateSaga(action: PayloadAction<any>) {
 }
 
 export function * roundSaga() {
-  yield takeLatest(updateStatus, broadcastUpdateSaga)
-  yield takeLatest(castVote, broadcastUpdateSaga)
-  yield takeLatest(reset, broadcastResetSaga)
+  yield takeLatest(updateStatus, propogateUpdatesSaga)
+  yield takeLatest(castVote, propogateUpdatesSaga)
+  yield takeLatest(updateDescription, broadcastOwnerUpdatesSaga)
+  yield takeLatest(reset, broadcastOwnerUpdatesSaga)
 }
 
 export default roundSlice.reducer

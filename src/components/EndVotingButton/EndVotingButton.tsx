@@ -5,20 +5,16 @@ import styles from './EndVotingButton.module.scss'
 const EndVotingButton = () => {
   const dispatch = useAppDispatch()
   const voteCount = useAppSelector(state => Object.keys(state.round.votes).length)
-  const isOwner = useAppSelector(state => state.room.owner)
 
-  if (voteCount > 0 && isOwner) {
-    return (
-      <button
-        className={styles.button}
-        onClick={() => dispatch(updateStatus(RoundStatus.VIEWING))}
-      >
-        <b>End Voting</b>
-      </button>
-    )
-  }
-
-  return null
+  return (
+    <button
+      className={styles.button}
+      disabled={voteCount < 1}
+      onClick={() => dispatch(updateStatus(RoundStatus.VIEWING))}
+    >
+      <b>End Voting</b>
+    </button>
+  )
 }
 
 export default EndVotingButton

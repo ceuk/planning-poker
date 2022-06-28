@@ -1,0 +1,29 @@
+.input {
+    font-size: 1.8rem;
+    line-height: 2;
+    padding: 1.5rem;
+    min-height: 5rem;
+    border: 0.1rem solid var(--color-bg-secondary);
+    margin-top: 2rem;
+    width: 45rem;
+    max-width: 80vw;
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    line-height: 1.25;
+    text-align: left;
+    overflow: hidden;
+    white-space: pre-wrap;
+
+    a {
+        word-break: break-all
+    }
+
+    &:empty:before{
+      content: attr(placeholder);
+      font-style: italic;
+      pointer-events: none;
+      font-size: 1.7rem;
+      display: block;
+      color: var(--color-text-secondary);
+    }
+}

@@ -1,9 +1,11 @@
 .button {
     display: block;
-    margin: auto;
+    margin: 0 auto;
     max-width: 100%;
-    width: 25rem;
+    width: 45rem;
     animation: growIn .2s cubic-bezier(0.42, 0, 0.56, 1.15) 0s 1 normal forwards;
+    background: green;
+    border-color: green;
 }
 
 @keyframes growIn {

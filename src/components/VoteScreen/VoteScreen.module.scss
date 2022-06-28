@@ -9,6 +9,7 @@
 
 .heading {
     margin-top: auto;
+    margin-bottom: 1.5rem;
 }
 
 .cards {
@@ -19,4 +20,13 @@
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    @media (min-width: 640px) {
+        flex-direction: row;
+    }
 }

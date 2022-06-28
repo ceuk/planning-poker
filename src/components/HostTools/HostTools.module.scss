@@ -1,0 +1,15 @@
+.root {
+    max-width: 100%;
+    text-align: center;
+    padding: 2rem;
+    margin: 0 1rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    border: 0.3rem solid var(--color-bg);
+    display: inline-block;
+    flex: 0 1 auto;
+
+    h3 {
+        margin-top: 0;
+    }
+}
