@@ -47,9 +47,17 @@ export const {
   reset
 } = roundSlice.actions
 
+function * broadcastResetSaga(action: PayloadAction<any>) {
+  const owner: boolean = yield select(state => state.room.owner)
+  if (owner) {
+    yield call(Room.Broadcast, action)
+  }
+}
+
 function * broadcastUpdateSaga(action: PayloadAction<any>) {
   const owner: boolean = yield select(state => state.room.owner)
-  if (action.payload?.id === Room.MyID || (!action.payload?.id && owner) || (action.type === 'round/castVote' && action.payload?.id && action.payload?.id !== Room.MyID && owner)) {
+  const isMyAction = action.payload?.id === Room.MyID
+  if (isMyAction || owner) {
     yield call(Room.Broadcast, action)
   }
 }
@@ -57,7 +65,7 @@ function * broadcastUpdateSaga(action: PayloadAction<any>) {
 export function * roundSaga() {
   yield takeLatest(updateStatus, broadcastUpdateSaga)
   yield takeLatest(castVote, broadcastUpdateSaga)
-  yield takeLatest(reset, broadcastUpdateSaga)
+  yield takeLatest(reset, broadcastResetSaga)
 }
 
 export default roundSlice.reducer
