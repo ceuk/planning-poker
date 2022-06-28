@@ -10,7 +10,7 @@ abstract class Room {
 
   constructor(public roomId: string, public userName: string) { }
 
-  public broadcast(_: PayloadAction<unknown>, __?: DataConnection) {}
+  public broadcast(_: PayloadAction<unknown>, __?: string) {}
 
   public destroy() {
     this.peer?.destroy()
@@ -95,9 +95,9 @@ class RoomHost extends Room {
     this.connections.get(clientId)?.send(data)
   }
 
-  public override broadcast(data: PayloadAction<unknown>, origin?: DataConnection) {
+  public override broadcast(data: PayloadAction<unknown>, originPeerId?: string) {
     this.connections.forEach((storedConnection, storedConnectionId) => {
-      if (origin?.peer !== storedConnectionId) {
+      if (originPeerId !== storedConnectionId) {
         storedConnection.send(data)
       }
     })
@@ -108,7 +108,7 @@ class RoomHost extends Room {
       const updatePayload = { id: connection.peer, name: connection.label }
       this.connections.set(connection.peer, connection)
       this.dispatch(addConnection(updatePayload))
-      this.broadcast(addConnection(updatePayload), connection)
+      this.broadcast(addConnection(updatePayload), connection.peer)
       connection.on('data', this.onReceiveData.bind(this))
       connection.on('close', () => this.onReceiveDisconnection(connection))
     })
@@ -160,8 +160,8 @@ class RoomInterface {
     }
   }
 
-  static Broadcast(action: PayloadAction<unknown>) {
-    RoomInterface?.Instance?.broadcast(action)
+  static Broadcast(action: PayloadAction<unknown>, originPeerId?: string) {
+    RoomInterface?.Instance?.broadcast(action, originPeerId)
   }
 
   static get MyID() {

@@ -57,15 +57,16 @@ export const {
 function * broadcastOwnerUpdatesSaga(action: PayloadAction<any>) {
   const owner: boolean = yield select(state => state.room.owner)
   if (owner) {
-    yield call(Room.Broadcast, action)
+    yield call(Room.Broadcast, action, action.payload?.id)
   }
 }
 
 function * propogateUpdatesSaga(action: PayloadAction<any>) {
   const owner: boolean = yield select(state => state.room.owner)
   const isMyAction = action.payload?.id === Room.MyID
+
   if (isMyAction || owner) {
-    yield call(Room.Broadcast, action)
+    yield call(Room.Broadcast, action, action.payload?.id)
   }
 }
 
