@@ -49,7 +49,7 @@ export const {
 
 function * broadcastUpdateSaga(action: PayloadAction<any>) {
   const owner: boolean = yield select(state => state.room.owner)
-  if (action.payload?.id === Room.MyID || (!action.payload?.id && owner) || (action.type === 'castVote' && action.payload?.id && action.payload?.id !== Room.MyID)) {
+  if (action.payload?.id === Room.MyID || (!action.payload?.id && owner) || (action.type === 'rount/castVote' && action.payload?.id && action.payload?.id !== Room.MyID)) {
     yield call(Room.Broadcast, action)
   }
 }
