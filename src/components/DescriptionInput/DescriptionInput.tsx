@@ -24,13 +24,16 @@ const DescriptionInput = () => {
     dispatch(updateDescription(html))
   }
   return (
-    <div
-      contentEditable
-      className={styles.input}
-      aria-label="Enter a subject for the current vote"
-      placeholder="What is being voted on?"
-      onBlur={handleBlur}
-    />
+    <>
+      <div
+        contentEditable
+        className={styles.input}
+        aria-label="Enter a subject for the current vote"
+        placeholder="What is being voted on?"
+        onBlur={handleBlur}
+      />
+      <p className={styles.tip}><b>Tip:</b> You can write links like this:<pre>[link text](https://link-url)</pre></p>
+    </>
   )
 }
 

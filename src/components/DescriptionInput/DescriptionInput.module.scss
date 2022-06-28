@@ -1,5 +1,5 @@
 .input {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     line-height: 2;
     padding: 1.5rem;
     min-height: 5rem;
@@ -19,11 +19,23 @@
     }
 
     &:empty:before{
-      content: attr(placeholder);
-      font-style: italic;
-      pointer-events: none;
-      font-size: 1.7rem;
-      display: block;
-      color: var(--color-text-secondary);
+        text-align: center;
+        content: attr(placeholder);
+        font-style: italic;
+        pointer-events: none;
+        font-size: 1.5rem;
+        font-weight: light;
+        display: block;
+        color: var(--color-text-secondary);
+    }
+}
+
+.tip {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    pre {
+        margin: 0;
+        padding: 0.5rem;
     }
 }

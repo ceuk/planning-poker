@@ -6,7 +6,7 @@ const OptionToggle = () => {
   const dispatch = useAppDispatch()
   const handleClick = () => dispatch(toggleOptions())
   return (
-    <button onClick={handleClick} title="Toggle Options" className={styles.root}>⚙</button>
+    <button onClick={handleClick} title="Toggle Options" className={styles.root}>⚙️</button>
   )
 }
 
