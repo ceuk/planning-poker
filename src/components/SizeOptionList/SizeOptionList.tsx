@@ -19,23 +19,23 @@ const SizeOptionList = () => {
         onChange={handleChange(lowCards)}
         name="cards"
         value="lowCards"
-        label="Smaller Values Only"
-        hint={`e.g. ${lowCards.slice(0, 4).join(', ')}`}
+        label="Small Values"
+        hint={`e.g. ${lowCards.slice(0, 5).join(', ')}`}
         checked={selectedCards === lowCards}
       />
       <OptionCard
         onChange={handleChange(highCards)}
         name="cards"
         value="highCards"
-        label="Larger Values Only"
-        hint={`e.g. ${highCards.slice(0, 4).join(', ')}`}
+        label="Larger Values"
+        hint={`e.g. ${highCards.slice(0, 5).join(', ')}`}
         checked={selectedCards === highCards}
       />
       <OptionCard
         onChange={handleChange(lowCards.concat(highCards))}
         name="cards"
         value="allCards"
-        label="All Card Values"
+        label="All Values"
         hint="Useful if you are estimating a mix of stories and epics"
       />
     </List>
