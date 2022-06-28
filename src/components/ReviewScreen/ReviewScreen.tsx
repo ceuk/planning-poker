@@ -1,5 +1,6 @@
 import { useAppSelector } from '@/state/hooks'
 import Nav from '../Nav/Nav'
+import OptionsPanel from '../OptionsPanel/OptionsPanel'
 import ResetRoundButton from '../ResetRoundButton/ResetRoundButton'
 import styles from './ReviewScreen.module.scss'
 
@@ -10,6 +11,7 @@ const ReviewScreen = () => {
   return (
     <header className={styles.root}>
       <Nav />
+      <OptionsPanel />
       <h1>Voting Results</h1>
       <h2>Most Common: {mostCommon}</h2>
       <table className={styles.table}>

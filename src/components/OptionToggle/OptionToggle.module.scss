@@ -1,0 +1,28 @@
+.root {
+    position: absolute;
+    right: 100%;
+    top: 2rem;
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    background: var(--color-bg);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    padding: 1.4rem;
+    cursor: pointer;
+    font-size: 2rem;
+    border: 0;
+
+    &:hover {
+        filter: none;
+    }
+
+    &:after {
+        content: "";
+        background: var(--color-bg);
+        width: 1rem;
+        height: 100%;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        display: block;
+    }
+
+}

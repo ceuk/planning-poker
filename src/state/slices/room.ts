@@ -14,6 +14,7 @@ interface RoomState {
   joinRoomError: boolean
   hostName: string
   players: {name: string, id: string}[]
+  optionsVisible: boolean
 }
 
 type Reducers = MapReducerPayloads<RoomState, {
@@ -28,6 +29,7 @@ type Reducers = MapReducerPayloads<RoomState, {
   updateConnections: Record<string, string>
   updateHostName: string
   leaveRoom: void
+  toggleOptions: void
 }>
 
 const initialState: RoomState = {
@@ -37,7 +39,8 @@ const initialState: RoomState = {
   createRoomError: false,
   joinRoomError: false,
   hostName: '',
-  players: []
+  players: [],
+  optionsVisible: false
 }
 
 export const roomSlice = createSlice<RoomState, Reducers>({
@@ -84,6 +87,9 @@ export const roomSlice = createSlice<RoomState, Reducers>({
       state.hostName = payload
       state.players = buildPlayerList(state)
     },
+    toggleOptions: (state) => {
+      state.optionsVisible = !state.optionsVisible
+    },
     leaveRoom: () => {
       return initialState
     }
@@ -98,6 +104,7 @@ export const {
   loadRoom,
   addConnection,
   removeConnection,
+  toggleOptions,
   updateConnectionStatus,
   updateConnections,
   leaveRoom,

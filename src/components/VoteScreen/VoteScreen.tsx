@@ -5,6 +5,7 @@ import VotingCard from '@/components/VotingCard/VotingCard'
 import Room from '@/services/Room/Room'
 import styles from './VoteScreen.module.scss'
 import EndVotingButton from '../EndVotingButton/EndVotingButton'
+import OptionsPanel from '../OptionsPanel/OptionsPanel'
 
 const VoteScreen = () => {
   const cards = useAppSelector(state => state.deck.cards)
@@ -14,6 +15,7 @@ const VoteScreen = () => {
     <>
       <header className={styles.root}>
         <Nav />
+        <OptionsPanel />
         <VoteTracker />
         <EndVotingButton />
         <h1 className={styles.heading}>Place your vote</h1>

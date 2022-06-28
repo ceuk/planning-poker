@@ -1,0 +1,34 @@
+.root {
+    position: fixed;
+    left: 100%;
+    top: 20vh;
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    background: var(--color-bg);
+    border-radius: var(--border-radius);
+    padding: 0 3rem;
+    transition: transform .2s ease-in-out;
+    transform: translateX(0);
+    min-width: 20rem;
+    max-width: calc(100vh - 4rem);
+    text-align: left;
+
+    &:hover {
+        transform: translateX(-1rem);
+    }
+
+    &.visible {
+        transform: translateX(-100%);
+    }
+}
+
+.simpleButton {
+    background: transparent;
+    border: 0;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: normal;
+    text-decoration: underline;
+    padding: 0;
+    margin-bottom: 2rem;
+    margin-top: 0;
+}
