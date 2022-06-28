@@ -32,7 +32,7 @@ const DescriptionInput = () => {
         placeholder="What is being voted on?"
         onBlur={handleBlur}
       />
-      <p className={styles.tip}><b>Tip:</b> You can write links like this:<pre>[link text](https://link-url)</pre></p>
+      <p className={styles.tip}><sup>Tip:</sup> You can write links like this:<pre>[link text](https://link-url)</pre></p>
     </>
   )
 }

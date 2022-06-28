@@ -1,0 +1,39 @@
+.container {
+    padding: 0 2rem;
+
+    summary {
+        font-size: 2rem;
+    }
+
+    h5 {
+        padding-left: 2rem;
+        margin: 0 0 -1rem;
+        font-size: 1.6rem;
+    }
+
+    li {
+        font-size: 1.5rem;
+    }
+
+    p {
+        padding-left: 2rem;
+        font-size: 1.5rem;
+    }
+}
+
+.heading {
+    font-size: 3rem;
+}
+
+.helpIcon {
+    color: var(--color);
+    font-weight: bold;
+    font-size: 4rem;
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    display: block;
+    margin: 0 auto;
+    border: 0.4rem solid var(--color);
+    box-sizing: content-box;
+}

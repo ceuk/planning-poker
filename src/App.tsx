@@ -6,6 +6,7 @@ import CreateRoom from '@/pages/CreateRoom/CreateRoom'
 import { useAppDispatch } from '@/state/hooks'
 import { updateUserName } from './state/slices/user'
 import 'react-toastify/dist/ReactToastify.css'
+import Docs from './pages/Docs/Docs'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -18,6 +19,7 @@ const App = () => {
       <Routes>
         <Route path="/room/:roomId" element={<Room />} />
         <Route path="/create-room" element={<CreateRoom />} />
+        <Route path="/docs" element={<Docs />} />
         <Route path="/" element={<Home />} />
         <Route element={<Navigate to="/" />} />
       </Routes>
